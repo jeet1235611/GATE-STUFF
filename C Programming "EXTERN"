@@ -1,0 +1,35 @@
+Example 4:
+
+#include "somefile.h" 
+extern int var; 
+int main(void) 
+{ 
+ var = 10; 
+ return 0; 
+} 
+Copy CodeRun on IDE
+
+Analysis: Supposing that somefile.h has the definition of var. This program will be compiled successfully.
+
+Example 5:
+
+extern int var = 0; 
+int main(void) 
+{ 
+ var = 10; 
+ return 0; 
+} 
+Copy CodeRun on IDE
+
+Analysis: Guess this program will work? Well, here comes another surprise from C standards. They say that..if a variable is only declared and an initializer is also provided with that declaration, then the memory for that variable will be allocated i.e. that variable will be considered as defined. Therefore, as per the C standard, this program will compile successfully and work.
+
+So that was a preliminary look at “extern” keyword in C.
+
+I’m sure that you want to have some take away from the reading of this post. And I would not disappoint you. 🙂
+In short, we can say
+
+1. A declaration can be done any number of times but definition only once.
+2. “extern” keyword is used to extend the visibility of variables/functions().
+3. Since functions are visible throughout the program by default. The use of extern is not needed in function declaration/definition. Its use is redundant.
+4. When extern is used with a variable, it’s only declared not defined.
+5. As an exception, when an extern variable is declared with initialization, it is taken as the definition of the variable as well.
